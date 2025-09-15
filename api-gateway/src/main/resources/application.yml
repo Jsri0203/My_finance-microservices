@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth
+          uri: http://auth-service:8081
+          predicates:
+            - Path=/api/auth/**
+
+        - id: account
+          uri: http://account-service:8082
+          predicates:
+            - Path=/api/accounts/**
+
+        - id: transaction
+          uri: http://transaction-service:8083
+          predicates:
+            - Path=/api/transactions/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
