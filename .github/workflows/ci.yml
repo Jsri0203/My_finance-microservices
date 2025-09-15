@@ -33,4 +33,7 @@ jobs:
 
       # Build all modules (parent + common + all services) and run tests
       - name: Build and Test
-        run: mvn -B clean verify
+        run: mvn -B -T 1C clean verify
+
+      
+
